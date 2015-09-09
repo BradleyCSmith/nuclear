@@ -164,12 +164,16 @@ for(i in 1:nrow(ID)){
     cat(i, " out of ", nrow(ID), " country years generated.","\n")}
 } # Loop over i
 
+# Remove the top and bottom rows of X, which are NA-ridden
+X <- X[-1,]
+X <- X[-nrow(X),]
 
 # Recode our variables, and save them as numeric
 X$ccode <- as.numeric(X$ccode)
 X$year <- as.numeric(X$year)
 X$ID <- as.numeric(X$ID)
 X$response <- as.numeric(X$response)
+X$activity <- as.numeric(X$activity)
 
 # Resort our data so that it is ordered by ccode, then year
 X <- X[order(X$ccode, X$year),]
@@ -215,11 +219,16 @@ IDindex <- as.data.frame(cbind(ID$ID,c(1:length(ID$ID))))
 names(IDindex) <- c("ID", "nuindex")
 
 X$nuindex <- NA
+
+
 # Now loop through X to generate a variable associating each response with an
 # index in the vector of nu
 for (i in 1:nrow(IDindex)){
   X$nuindex[X$ID == IDindex$ID[i]] <- IDindex$nuindex[i]
 }
+
+#Remove the first row of X, which is all NA
+X <- X[-1,]
 
 # Now, clear the workspace and save
 rm(list = setdiff(ls(), c("X",
@@ -228,3 +237,4 @@ rm(list = setdiff(ls(), c("X",
                           "indices")))
 
 save.image("~/Google Drive/Research/Nuclear Latency/Data/X_v4.RData")
+
