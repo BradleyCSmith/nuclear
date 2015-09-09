@@ -164,7 +164,6 @@ for(i in 1:nrow(ID)){
     cat(i, " out of ", nrow(ID), " country years generated.","\n")}
 } # Loop over i
 
-save.image("~/Google Drive/Research/Nuclear Latency/Data/X_v4.RData")
 
 # Recode our variables, and save them as numeric
 X$ccode <- as.numeric(X$ccode)
