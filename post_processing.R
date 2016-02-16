@@ -18,8 +18,8 @@ setwd("~/Google Drive/Research/Nuclear Latency")
 #setwd("C:/Users/bsmith/Desktop/Nuclear Latency")
 
 # load in the results from simulation
-load("Data/dynamic_10k.RData")
-
+#load("Data/dynamic_10k.RData")
+load("Data/new_nus_1000draws.RData")
 
 # Extract the posteriors
 posterior <- extract(fit)
@@ -30,7 +30,7 @@ rm(list = setdiff(ls(), c("ID", "posterior")))
 # Create an object that binds the posterior means of the Nu variable to the
 # corresponding ID variables
 
-Nu_posterior <- as.data.frame(posterior[[2]])
+Nu_posterior <- as.data.frame(posterior$Nu)
 Nu_means <- colMeans(Nu_posterior)
 Nu_quant_80 <- apply(Nu_posterior, 
                      2,
@@ -56,8 +56,8 @@ N_CLEAR <- cbind(ID[,c("ccode",
                  Nu_quant_95)
 
 # Now we'll gather the alpha (difficulty) and beta (discrimination) parameters similarly
-Beta_posterior <- as.data.frame(posterior[[1]])
-alpha_posterior <- as.data.frame(posterior[[3]])
+Beta_posterior <- as.data.frame(posterior$Beta)
+alpha_posterior <- as.data.frame(posterior$alpha)
 
 Beta_means <- colMeans(Beta_posterior)
 alpha_means <- colMeans(alpha_posterior)
@@ -96,4 +96,4 @@ names(alphas) <- varnames
 # Clear everything out of the workspace and save the data
 rm(list = setdiff(ls(), c("N_CLEAR", "alphas", "Betas")))
 
-#save.image("~/Google Drive/Research/Nuclear Latency/Data/N_CLEAR_v3.RData")
+save.image("~/Google Drive/Research/Nuclear Latency/Data/N_CLEAR_Dec92015.RData")
