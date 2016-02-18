@@ -77,9 +77,16 @@ ID <- X[,c("ccode",
            "elect_i",
            "nuke_i",
            "explo_i",
-           "civpower",
            "test",
-           "enr",
+           "reprocess",
+           "gas_diff",
+           "gas_cent",
+           "emis",
+           "chem_and_ion_ex",
+           "aero_iso_separation",
+           "laser",
+           "thermal_diff",
+           "submarines",
            "nuk_a_p",
            "nuke_df")]
 
@@ -125,9 +132,16 @@ activities <- c("ura_i",
                 "elect_i",
                 "nuke_i",
                 "explo_i",
-                "civpower",
                 "test",
-                "enr",
+                "reprocess",
+                "gas_diff",
+                "gas_cent",
+                "emis",
+                "chem_and_ion_ex",
+                "aero_iso_separation",
+                "laser",
+                "thermal_diff",
+                "submarines",
                 "nuk_a_p",
                 "nuke_df")
 
@@ -227,8 +241,8 @@ for (i in 1:nrow(IDindex)){
   X$nuindex[X$ID == IDindex$ID[i]] <- IDindex$nuindex[i]
 }
 
-#Remove the first row of X, which is all NA
-X <- X[-1,]
+#Remove the first row of X, which is all NA (Not necessary now for some reason)
+#X <- X[-1,]
 
 # Now, clear the workspace and save
 rm(list = setdiff(ls(), c("X",
@@ -236,5 +250,5 @@ rm(list = setdiff(ls(), c("X",
                           "ID",
                           "indices")))
 
-save.image("~/Google Drive/Research/Nuclear Latency/Data/X_v4.RData")
+save.image("~/Google Drive/Research/Nuclear Latency/Data/X_v5.RData")
 

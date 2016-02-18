@@ -16,7 +16,7 @@ library(foreign)
 
 setwd("~/Google Drive/Research/Nuclear Latency")
 
-load("Data/X_v4.RData")
+load("Data/X_v5.RData")
 
 
 # Create the data object to feed to Rstan 
@@ -60,7 +60,7 @@ for (i in 1:N){
 }
 '
 
-iter <- 1000
+iter <- 10000
 
 fit <- stan(model_code = nuclear.stan,
             data = stan.data,
