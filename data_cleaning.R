@@ -93,7 +93,7 @@ ID <- X[,c("ccode",
            "test",
            "reprocess",
            "enrichment",
-           "submarines"
+           "submarines",
            "nuk_a_p",
            "nuke_df")]
 
@@ -143,7 +143,7 @@ activities <- c("ura_i",
                 "test",
                 "reprocess",
                 "enrichment",
-                "submarines"
+                "submarines",
                 "nuk_a_p",
                 "nuke_df")
 
