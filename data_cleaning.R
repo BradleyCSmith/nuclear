@@ -93,6 +93,7 @@ ID <- X[,c("ccode",
            "test",
            "reprocess",
            "enrichment",
+           "submarines"
            "nuk_a_p",
            "nuke_df")]
 
@@ -142,6 +143,7 @@ activities <- c("ura_i",
                 "test",
                 "reprocess",
                 "enrichment",
+                "submarines"
                 "nuk_a_p",
                 "nuke_df")
 
@@ -250,5 +252,5 @@ rm(list = setdiff(ls(), c("X",
                           "ID",
                           "indices")))
 
-save.image("~/Google Drive/Research/Nuclear Latency/Data/X_v6.RData")
+save.image("~/Google Drive/Research/Nuclear Latency/Data/X_v7.RData")
 

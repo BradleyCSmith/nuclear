@@ -16,7 +16,7 @@ library(foreign)
 
 setwd("~/Google Drive/Research/Nuclear Latency")
 
-load("Data/X_v6.RData")
+load("Data/X_v7.RData")
 
 
 # Create the data object to feed to Rstan 
