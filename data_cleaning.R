@@ -66,6 +66,19 @@ X <- merge(X,
 # Replace nuk_a_p NAs with hasprog
 X$nuk_a_p[X$year>1992] <- X$hasprog[X$year>1992]
 
+# Now we'll code a variable that is a 1 if any of the enrichment variables is 1,
+# and equal to 0 otherwise.
+X$enrichmentsum <- as.numeric(apply(X[,c("gas_diff",
+                                         "gas_cent",
+                                         "emis",
+                                         "chem_and_ion_ex",
+                                         "aero_iso_separation",
+                                         "laser",
+                                         "thermal_diff")],
+                                    1,
+                                    sum))
+
+X$enrichment <- as.numeric(as.logical(X$enrichmentsum > 0))
 
 ID <- X[,c("ccode",
            "year",
@@ -79,16 +92,10 @@ ID <- X[,c("ccode",
            "explo_i",
            "test",
            "reprocess",
-           "gas_diff",
-           "gas_cent",
-           "emis",
-           "chem_and_ion_ex",
-           "aero_iso_separation",
-           "laser",
-           "thermal_diff",
-           "submarines",
+           "enrichment",
            "nuk_a_p",
            "nuke_df")]
+
 
 # Locate states with weapons in 1992
 prog <- ID[ID$year == 1992,]
@@ -134,14 +141,7 @@ activities <- c("ura_i",
                 "explo_i",
                 "test",
                 "reprocess",
-                "gas_diff",
-                "gas_cent",
-                "emis",
-                "chem_and_ion_ex",
-                "aero_iso_separation",
-                "laser",
-                "thermal_diff",
-                "submarines",
+                "enrichment",
                 "nuk_a_p",
                 "nuke_df")
 
@@ -250,5 +250,5 @@ rm(list = setdiff(ls(), c("X",
                           "ID",
                           "indices")))
 
-save.image("~/Google Drive/Research/Nuclear Latency/Data/X_v5.RData")
+save.image("~/Google Drive/Research/Nuclear Latency/Data/X_v6.RData")
 
